@@ -15,4 +15,4 @@ It follows the MVVM architechture, that offers modularity, is easy to test, and 
 - Third Party:
     - [DGChart](https://github.com/danielgindi/Charts) - To draw the styled chart.
 
-### [Walk through video](https://drive.google.com/file/d/1KLfSfYclenJAhoK-vupQq7Zk-GxeyFXe/view?usp=sharing)
+### [Walk through video](https://drive.google.com/file/d/1ErKRkEAVS5AuJFyaUSmuGxKCycm2e1Ge/view?usp=sharing)
