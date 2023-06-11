@@ -73,5 +73,8 @@ extension UIColor{
     static var ChartG2: UIColor {
         return UIColor(named: "ChartG2")!
     }
+    static var DateBorder: UIColor {
+        return UIColor(named: "DateBorder")!
+    }
 }
 

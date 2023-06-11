@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import DGCharts
-import OrderedCollections
+
 class LinkViewModel{
     
     @Published var linkData: LinkData?
@@ -29,15 +29,22 @@ class LinkViewModel{
         })
     }
     
-    func generateChartData() -> [ChartDataEntry]{
+    func generateChartData() -> (chartData:[ChartDataEntry],date: String){
         
         var highLineEntry = [ChartDataEntry]()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        var arrDict: OrderedDictionary<String, Int> = [:]
-    
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "dd MMM"
+        var date = ""
         if let chartData = self.linkData?.data.overallURLChart{
-            for chart in chartData.sorted { $0.key < $1.key }{
+            let arrSorted = chartData.sorted(by: { $0.key < $1.key })
+            let firstDate = arrSorted.first?.key ?? ""
+            let lastDate = arrSorted.last?.key ?? ""
+            let formattedFirstDate = outputFormatter.string(from: formatter.date(from: firstDate) ?? Date())
+            let formattedLastDate = outputFormatter.string(from: formatter.date(from: lastDate) ?? Date())
+            date = formattedFirstDate + " - " + formattedLastDate
+            for chart in arrSorted{
                 let value = chart.value
                 let formattedDate = formatter.date(from: chart.key) ?? Date()
                 let timestmp = Double(formattedDate.timeIntervalSince1970)
@@ -45,8 +52,7 @@ class LinkViewModel{
                 highLineEntry.append(highValue)
             }
         }
-        print(highLineEntry)
-        return highLineEntry
+        return (highLineEntry,date)
     }
 
     func setTopLinkData(){
@@ -68,17 +74,20 @@ class LinkViewModel{
         let mobileNo = self.linkData?.supportWhatsappNumber ?? ""
         let urlWhats = "whatsapp://send?phone=91\(mobileNo)"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
-            if let whatsappURL = URL(string: urlString) {
-                if UIApplication.shared.canOpenURL(whatsappURL){
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(whatsappURL)
-                    }
+            openLink(urlString: urlString)
+        }
+    }
+    
+    func openLink(urlString: String){
+        if let url = URL(string: urlString) {
+            if UIApplication.shared.canOpenURL(url){
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
                 }
-                else {
-                    print("Install Whatsapp")
-                }
+            }else{
+                print("url is incorrect")
             }
         }
     }

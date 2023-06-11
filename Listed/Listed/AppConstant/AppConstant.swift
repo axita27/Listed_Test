@@ -8,12 +8,12 @@
 import Foundation
 
 // MARK: - Constant
-class Constant {
+struct Constant {
     static let accessToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU5MjcsImlhdCI6MTY3NDU1MDQ1MH0.dCkW0ox8tbjJA2GgUx2UEwNlbTZ7Rr38PVFJevYcXFI"
     static let apiURL = "https://api.inopenapp.com/api/v1/dashboardNew"
 }
 
-class LinkConstant{
+struct LinkConstant{
     static let lblDashboard = "Dashboard"
     static let lblName = "Axita Dholariya"
     static let btnTopLinks = "Top Links"

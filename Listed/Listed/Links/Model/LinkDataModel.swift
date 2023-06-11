@@ -1,6 +1,7 @@
 
 import Foundation
 class LinkDataGetter {
+    
     func getDashboardInfo(withSuccess success: @escaping (_ responseDictionary: LinkData?) -> Void, failure: @escaping (_ error: String) -> Void){
         // *** 1 ***
         let session = URLSession.shared

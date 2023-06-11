@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol DashboardLinkCellDelegate: AnyObject {
+    func clickOnLinkButton(Link:String)
+}
 
 class LinkCell: UITableViewCell {
     
@@ -34,7 +37,10 @@ class LinkCell: UITableViewCell {
             lblLink.font = .figtreeRegular(ofSize: 14)
         }
     }
+    @IBOutlet weak var btnLink: UIButton!
     
+    weak var delegate: DashboardLinkCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -53,5 +59,9 @@ class LinkCell: UITableViewCell {
         let formattedDate = Date.dateFromZoneFormatString(dateString: linkData.createdAt) ?? Date()
         self.lblLinkDate.text = formattedDate.dateStringFromDate(toFormat: "dd MMM yyyy")
         
+    }
+    
+    @IBAction func btnLinkClick(sender: UIButton){
+        delegate?.clickOnLinkButton(Link: lblLink.text ?? "")
     }
 }

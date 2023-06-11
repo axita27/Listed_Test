@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -50,6 +51,12 @@
                                 <color key="textColor" name="Greetings"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc4-tP-CuV">
+                                <rect key="frame" x="266.66666666666669" y="13.66666666666667" width="41.333333333333314" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LinkBG" translatesAutoresizingMaskIntoConstraints="NO" id="iWh-MF-068">
                                 <rect key="frame" x="0.0" y="76" width="320" height="40"/>
                                 <constraints>
@@ -57,22 +64,24 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzX-GP-3Ml">
-                                <rect key="frame" x="12.000000000000004" y="86" width="41.333333333333343" height="20.333333333333329"/>
+                                <rect key="frame" x="12.000000000000004" y="79" width="41.333333333333343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="Header"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc4-tP-CuV">
-                                <rect key="frame" x="266.66666666666669" y="13.66666666666667" width="41.333333333333314" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZU-uW-Bop">
+                                <rect key="frame" x="12" y="79" width="41.333333333333343" height="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="btnLinkClickWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fmF-BI-Ing"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nP1-Nf-Vu5" secondAttribute="trailing" constant="12" id="1fx-ae-VRU"/>
                             <constraint firstItem="EfF-qX-pWB" firstAttribute="leading" secondItem="7I7-JZ-evL" secondAttribute="trailing" constant="12" id="7vS-vG-TvC"/>
+                            <constraint firstItem="XZU-uW-Bop" firstAttribute="trailing" secondItem="gzX-GP-3Ml" secondAttribute="trailing" id="8pA-rR-Ixe"/>
                             <constraint firstAttribute="bottom" secondItem="iWh-MF-068" secondAttribute="bottom" id="FXY-za-Wfl"/>
                             <constraint firstItem="Nc4-tP-CuV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EfF-qX-pWB" secondAttribute="trailing" constant="12" id="HFj-yb-kqA"/>
                             <constraint firstItem="gzX-GP-3Ml" firstAttribute="centerY" secondItem="iWh-MF-068" secondAttribute="centerY" id="HJX-eb-4id"/>
@@ -81,9 +90,12 @@
                             <constraint firstItem="EfF-qX-pWB" firstAttribute="centerY" secondItem="7I7-JZ-evL" secondAttribute="centerY" id="KTQ-Bf-k2a"/>
                             <constraint firstItem="Nc4-tP-CuV" firstAttribute="centerY" secondItem="bAa-14-XOI" secondAttribute="centerY" id="PIn-oe-JRy"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gzX-GP-3Ml" secondAttribute="trailing" constant="12" id="Y0N-LQ-dGk"/>
+                            <constraint firstItem="XZU-uW-Bop" firstAttribute="leading" secondItem="gzX-GP-3Ml" secondAttribute="leading" id="bFa-e8-e9a"/>
                             <constraint firstAttribute="trailing" secondItem="Nc4-tP-CuV" secondAttribute="trailing" constant="12" id="e8g-he-gXq"/>
                             <constraint firstItem="gzX-GP-3Ml" firstAttribute="leading" secondItem="iWh-MF-068" secondAttribute="leading" constant="12" id="gPp-uS-15A"/>
                             <constraint firstAttribute="trailing" secondItem="iWh-MF-068" secondAttribute="trailing" id="jNQ-2p-7Rq"/>
+                            <constraint firstItem="XZU-uW-Bop" firstAttribute="top" secondItem="gzX-GP-3Ml" secondAttribute="top" id="k4T-uN-oJJ"/>
+                            <constraint firstItem="XZU-uW-Bop" firstAttribute="bottom" secondItem="gzX-GP-3Ml" secondAttribute="bottom" id="khA-Y1-7Aa"/>
                             <constraint firstItem="7I7-JZ-evL" firstAttribute="top" secondItem="kp0-OF-CBj" secondAttribute="top" constant="12" id="oDY-yA-Xvk"/>
                             <constraint firstItem="iWh-MF-068" firstAttribute="leading" secondItem="kp0-OF-CBj" secondAttribute="leading" id="txa-vk-vF3"/>
                             <constraint firstItem="nP1-Nf-Vu5" firstAttribute="centerY" secondItem="zp2-jK-F5Z" secondAttribute="centerY" id="xUb-hI-cNM"/>
@@ -106,6 +118,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnLink" destination="XZU-uW-Bop" id="SPZ-Hi-Qnv"/>
                 <outlet property="lblClick" destination="Nc4-tP-CuV" id="Che-1M-ghN"/>
                 <outlet property="lblClickTitle" destination="nP1-Nf-Vu5" id="Rnj-xh-ieI"/>
                 <outlet property="lblLink" destination="gzX-GP-3Ml" id="TlZ-52-Kah"/>

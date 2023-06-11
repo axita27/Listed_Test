@@ -38,7 +38,7 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var lineChart: LineChartView!
     @IBOutlet weak var vwDate: UIView!{
         didSet{
-            vwDate.layer.borderColor = UIColor.UnselectLinkText.cgColor
+            vwDate.layer.borderColor = UIColor.DateBorder.cgColor
             vwDate.layer.borderWidth = 1
         }
     }
@@ -136,7 +136,7 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var activityLoder: UIActivityIndicatorView!
     
     //MARK: - Variable
-    private var viewModel: LinkViewModel!
+    var viewModel: LinkViewModel!
     private var subscriptions = Set<AnyCancellable>()
     
     //MARK: - Viewlife Cycle
@@ -182,7 +182,8 @@ class DashboardVC: UIViewController {
     
     private func commonInit(){
         let dataChart = self.viewModel.generateChartData()
-        ChartGenerator.initChart(chart: lineChart, entries: [dataChart: (.ChatBorder, "")])
+        ChartGenerator.initChart(chart: lineChart, entries: [dataChart.chartData: (.ChatBorder, "")])
+        self.lblDate.text = dataChart.date
         self.cvDashboard.reloadData()
         self.btnTopLinks.isSelected = true
         self.btnRecentLinks.isSelected = false
@@ -190,6 +191,7 @@ class DashboardVC: UIViewController {
         setTblHeight()
     }
     
+    //set Constant value
     private func setupConstant(){
         self.lblHeader.text = LinkConstant.lblDashboard
         self.lblName.text = LinkConstant.lblName
@@ -204,6 +206,7 @@ class DashboardVC: UIViewController {
         self.lblOverview.text = LinkConstant.lblOverview
     }
     
+    //set selcetd link button
     private func setSelectedLinkUI(){
         if btnTopLinks.isSelected{
             self.vwTopLinks.backgroundColor = .Header
@@ -220,6 +223,7 @@ class DashboardVC: UIViewController {
         }
     }
     
+    //set tableview height
     private func setTblHeight(){
         self.tblLinks.reloadData()
         self.nslcTblHeight.constant = self.tblLinks.contentSize.height
@@ -250,62 +254,8 @@ class DashboardVC: UIViewController {
     }
 }
 
-//MARK: - CollectionView Delegates
-extension DashboardVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCVCell.listedClassName, for: indexPath) as! DashboardCVCell
-        
-        if indexPath.row == 0{
-            cell.lblTitle.text = LinkConstant.lblTodayClick
-            cell.lblData.text = "\(self.viewModel.linkData?.todayClicks ?? 0)"
-            cell.imgIcon.image = .Click
-        }else if indexPath.row == 1{
-            cell.lblTitle.text = LinkConstant.lblTopLocation
-            cell.lblData.text = self.viewModel.linkData?.topLocation ?? ""
-            cell.imgIcon.image = .LocationPin
-        }else if indexPath.row == 2{
-            cell.lblTitle.text = LinkConstant.lblTopSource
-            cell.lblData.text = self.viewModel.linkData?.topSource ?? ""
-            cell.imgIcon.image = .Source
-        }
-        
-        return cell
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+extension DashboardVC: DashboardLinkCellDelegate{
+    func clickOnLinkButton(Link: String) {
+        self.viewModel.openLink(urlString: Link)
     }
 }
-//MARK: - TabelView Delegates
-extension DashboardVC: UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = (self.viewModel.arrSelectedLink?.count ?? 0) > 4 ? 4 :  (self.viewModel.arrSelectedLink?.count ?? 0)
-        return count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 132
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 132
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.tblLinks.dequeueReusableCell(withIdentifier: LinkCell.listedClassName) as? LinkCell else {return UITableViewCell() }
-        if let linkData = self.viewModel.arrSelectedLink?[indexPath.row]{
-            cell.setData(linkData: linkData)
-        }
-        cell.selectionStyle = .none
-        return cell
-    }
-     
-}
-

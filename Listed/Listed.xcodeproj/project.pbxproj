@@ -11,6 +11,8 @@
 		36601EAA2A3504A300C31042 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 36601EA92A3504A300C31042 /* DGCharts */; };
 		36ACED4F2A35AE5300AC2E85 /* ChartGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ACED4E2A35AE5300AC2E85 /* ChartGenerator.swift */; };
 		36ACED522A35D25D00AC2E85 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 36ACED512A35D25D00AC2E85 /* OrderedCollections */; };
+		36ACED5F2A35FCD100AC2E85 /* DashbordVC + UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ACED5D2A35FCD100AC2E85 /* DashbordVC + UICollectionView.swift */; };
+		36ACED602A35FCD100AC2E85 /* Dashboard + UITableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ACED5E2A35FCD100AC2E85 /* Dashboard + UITableview.swift */; };
 		36B169A62A30E20200690853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B169A52A30E20200690853 /* AppDelegate.swift */; };
 		36B169A82A30E20200690853 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B169A72A30E20200690853 /* SceneDelegate.swift */; };
 		36B169AA2A30E20200690853 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B169A92A30E20200690853 /* DashboardVC.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		36601EA22A34F8C400C31042 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
 		36ACED4E2A35AE5300AC2E85 /* ChartGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartGenerator.swift; sourceTree = "<group>"; };
+		36ACED5D2A35FCD100AC2E85 /* DashbordVC + UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DashbordVC + UICollectionView.swift"; sourceTree = "<group>"; };
+		36ACED5E2A35FCD100AC2E85 /* Dashboard + UITableview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dashboard + UITableview.swift"; sourceTree = "<group>"; };
 		36B169A22A30E20200690853 /* Listed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Listed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B169A52A30E20200690853 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36B169A72A30E20200690853 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		36ACED5C2A35FCD100AC2E85 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				36ACED5D2A35FCD100AC2E85 /* DashbordVC + UICollectionView.swift */,
+				36ACED5E2A35FCD100AC2E85 /* Dashboard + UITableview.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		36B169992A30E20200690853 = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +170,6 @@
 				36B169D72A30E24900690853 /* Resource */,
 				36B169D52A30E22600690853 /* AppDelegate */,
 				36C2B5A42A338C6300E4AE7B /* AppConstant */,
-				36C2B5A52A338C7200E4AE7B /* Singleton */,
 				36C2B5A62A338C8500E4AE7B /* Links */,
 				36ACED462A359D5000AC2E85 /* CustomView */,
 				36B169D62A30E23900690853 /* Utilities */,
@@ -220,13 +232,6 @@
 			path = AppConstant;
 			sourceTree = "<group>";
 		};
-		36C2B5A52A338C7200E4AE7B /* Singleton */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Singleton;
-			sourceTree = "<group>";
-		};
 		36C2B5A62A338C8500E4AE7B /* Links */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +253,7 @@
 		36C2B5AC2A33903E00E4AE7B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				36ACED5C2A35FCD100AC2E85 /* Extension */,
 				36C2B5C22A34717C00E4AE7B /* View */,
 				36B169AB2A30E20200690853 /* Main.storyboard */,
 				36B169A92A30E20200690853 /* DashboardVC.swift */,
@@ -458,10 +464,12 @@
 				36C2B5BF2A34561300E4AE7B /* LinkViewModel.swift in Sources */,
 				36ACED4F2A35AE5300AC2E85 /* ChartGenerator.swift in Sources */,
 				36B169A62A30E20200690853 /* AppDelegate.swift in Sources */,
+				36ACED5F2A35FCD100AC2E85 /* DashbordVC + UICollectionView.swift in Sources */,
 				36B169A82A30E20200690853 /* SceneDelegate.swift in Sources */,
 				36C2B5BB2A339F4900E4AE7B /* UIkit + Extension.swift in Sources */,
 				36C2B5AB2A338FBB00E4AE7B /* Date + Extension.swift in Sources */,
 				36C2B5B92A33990E00E4AE7B /* Font + Extension.swift in Sources */,
+				36ACED602A35FCD100AC2E85 /* Dashboard + UITableview.swift in Sources */,
 				36C2B5A92A338E6400E4AE7B /* AppConstant.swift in Sources */,
 				36C2B5BD2A34553800E4AE7B /* LinkDataModel.swift in Sources */,
 				36C2B5CF2A349A9E00E4AE7B /* LinkCell.swift in Sources */,
